@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.datascientest.clientapp.dto.ClientDto;
@@ -46,10 +47,18 @@ public class ClientController {
 
     @PutMapping("{id}")
     public void updateClient(@PathVariable("id") Integer id, @RequestBody Client client) {
-	Client clientUpdate = clientRepository.getReferenceById(id);
+	Client clientUpdate = new Client();
 	clientUpdate.setNom(client.getNom());
 	clientUpdate.setAdresse(client.getAdresse());
 	clientRepository.save(client);
     }
 
+    @PutMapping
+    public void putClient(@PathVariable("id") Integer id, @RequestParam("nom") String nom,
+	    @RequestParam("adresse") String adresse) {
+	Client client = new Client();
+	client.setAdresse(client.getAdresse());
+	client.setNom(client.getNom());
+	clientRepository.save(client);
+    }
 }
