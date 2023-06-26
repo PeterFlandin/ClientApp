@@ -2,9 +2,13 @@ package edu.datascientest.clientapp.dto;
 
 import java.util.Objects;
 
-public class ClientDtoConsultation {
+import jakarta.validation.constraints.NotBlank;
 
+public class ClientDtoConsultation {
+    @NotBlank(message = "obligatoire")
     private Integer id;
+    @NotBlank(message = "obligatoire")
+
     private String nom;
 
     public Integer getId() {

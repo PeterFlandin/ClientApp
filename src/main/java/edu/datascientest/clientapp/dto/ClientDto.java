@@ -2,9 +2,15 @@ package edu.datascientest.clientapp.dto;
 
 import java.util.Objects;
 
-public class ClientDto {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
+public class ClientDto {
+    @NotBlank(message = "obligatoire")
+    @Size(min = 3, message = "3 lettre minimum et 10 maximum", max = 10)
     private String nom;
+    @NotBlank(message = "obligatoire")
+
     private String adresse;
 
     public String getNom() {
